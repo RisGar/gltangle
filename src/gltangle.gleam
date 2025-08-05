@@ -19,7 +19,7 @@ fn version_flag() -> glint.Flag(Bool) {
 const version_string = "0.1.0"
 
 fn parse() -> glint.Command(Nil) {
-  use <- glint.command_help("Tangle a markdown file to a code file")
+  use <- glint.command_help("Tangle Markdown code blocks to a code file")
 
   use version <- glint.flag(version_flag())
   use override <- glint.flag(override_flag())
@@ -46,11 +46,11 @@ fn parse() -> glint.Command(Nil) {
                 <> " blocks).",
               )
             Error(file_handler.ReadError) ->
-              io.println_error("error: failed to read file")
+              io.println_error("error: failed to read input file")
             Error(file_handler.ParseError) ->
-              io.println_error("error: failed to parse file")
+              io.println_error("error: failed to parse input file")
             Error(file_handler.WriteError) ->
-              io.println_error("error: failed to write file")
+              io.println_error("error: failed to write target file")
           }
         }
         _ -> {
