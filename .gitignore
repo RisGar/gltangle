@@ -1,0 +1,8 @@
+# Gleam files
+*.beam
+*.ez
+/build
+erl_crash.dump
+
+# macOS files
+**/.DS_Store
